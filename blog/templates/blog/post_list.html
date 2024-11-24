@@ -7,17 +7,23 @@
         <header>
             <h1><a href="/">Django Girls Blog</a></h1>
         </header>
-
-        <article>
-            <time>published: 14.06.2014, 12:14</time>
-            <h2><a href="">My first post</a></h2>
-            <p>This is my first attempt at learning Django. So far it has been smooth except for minor terminal issues which I received help on. Right now it mostly feels like copy and paste but it is better than doing nothing. Hopefully in a few months time I am able to use Django fluently and start to compete in hackathons.</p>
-        </article>
-
-        <article>
-            <time>published: 14.06.2014, 12:14</time>
-            <h2><a href="">My second post</a></h2>
-            <p>Today is November 21st 2024 and it is 9:15 pm. Today it rained all day for me and I just took my flu shot! I have lots of work in the upcoming weeks as the semester winds down. I will try to fit in this project as much as possible while I balance school. Seems to almost be done though meaning I can add it to my resume soon enough!</p>
-        </article>
-    </body>
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <title>Django Girls blog</title>
+            </head>
+            <body>
+                <header>
+                    <h1><a href="/">Django Girls Blog</a></h1>
+                </header>
+        
+                {% for post in posts %}
+                <article>
+                    <time>published: {{ post.published_date }}</time>
+                    <h2><a href="">{{ post.title }}</a></h2>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </article>
+            {% endfor %}
+            </body>
+        </html>
 </html>
